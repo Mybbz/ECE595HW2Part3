@@ -1,0 +1,21 @@
+# == Schema Information
+#
+# Table name: posts
+#
+#  id         :integer          not null, primary key
+#  title      :string(255)
+#  body       :text
+#  author     :text
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+class Post < ActiveRecord::Base
+  attr_accessible :author, :body, :title
+
+has_many :comments
+validates :title, :presence => true
+validates :body, :presence => true
+validates :author, :presence => true
+
+end
